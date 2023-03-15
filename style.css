@@ -11,13 +11,15 @@
 	--accent-3: #ffc941; 
 }
 
+html {
+	font-size: 12px;
+}
+
 body {
+	height: 100vh;
 	font-family: roboto, sans-serif;
 	margin: 0;
 	display: grid;
-	grid-template-columns: minmax(200px, 350px) 3fr minmax(200px, 350px);
-	grid-template-rows: 200px 1fr;
-	/* max-height: 100%; */
 }
 
 .header {
@@ -43,6 +45,7 @@ form {
 	border: none;
 	width: 80%;
 	height: 2rem;
+	padding-left: 1em;
 }
 
 .search-btn {
@@ -117,9 +120,13 @@ form {
 	font-weight: 700;
 }
 
+.buttons :hover {
+	scale: .96;
+}
+
 .sidebar {
-	font-size: 1rem;
-	padding: 2rem;
+	font-size: 1.5rem;
+	padding: 2rem 4rem 0;
 	grid-area: 1 / 1 / 3 / 2;
 	background-color: var(--accent-1);
 	color: white;
@@ -134,7 +141,7 @@ form {
 	font-weight: 1000;
 }
 
-.sidebar ul{
+.sidebar ul {
 	padding: 0;
 	display: grid;
 	gap: 1em;
@@ -151,17 +158,33 @@ form {
 }
 
 .sidebar li {
+	display: flex;
+	gap: 1rem;
 	grid-column: 2 / 3;
 }
 
-.dashboard,
-.right-side {
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.sidebar div :hover {
+  scale: 1.05;
+}
+
+.sidebar :visited {
+	color: white;
+}
+
+.main-content {
+	display: grid;
+	grid-template-columns: 1fr 300px;
 	background-color: var(--bg-color);
 }
 
 .dashboard {
-	grid-area: 2 / 2 / 3 / 3;
-	padding: 0 1.5rem 4rem;
+	grid-area: 1 / 1 / 2 / 2;
+	padding: 0 1.5rem 0;
 	display: grid;
 	align-content: start;
 }
@@ -174,16 +197,17 @@ h1 {
 
 .project-cards {
 	display: grid;
-	grid-template: repeat(3, minmax(100px, 1fr)) / repeat(2, minmax(300px, 1fr));
-	gap: 20px;
-	font-size: large;
+	grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+	/* align-content: space-around; */
+	gap: 2rem;
+	font-size: 1.25rem;
 }
 	
 .project {
 	border-left: 6px solid var(--accent-2);
 	background-color: var(--bg-color2);
 	border-radius: 6px;
-	padding: 10px;
+	padding: 1.5rem;
 	display: grid;
 }
 
@@ -207,22 +231,22 @@ h1 {
 
 .right-side {
 	display: grid;
-	grid-area: 2 / 3 / 3 / 4;
-	place-content: start;
-	place-items: center;
-	padding: 0 2rem 4rem 0;
+	grid-template-rows: 1fr 1fr;
+	align-items: start;
+	grid-area: 1 / 2 / 2 / 3;
+	padding: 0 2rem 0 1rem;
 }
 
 .card {
 	display: grid;
-	gap: 1.25em;
+	gap: 2em;
 	background-color: var(--bg-color2);
 	border-radius: 6px;
-	padding: 1.5rem;
+	padding: 1.5em 2rem 1em;
 }
 
-.announcements .card {
-	grid-template-rows: repeat(3, 8rem);
+.announcements {
+	grid-row: 1 2;
 }
 
 .card :last-child {
@@ -231,24 +255,15 @@ h1 {
 
 .card p {
 	color: grey;
-	
-}
-
-.announcements {
-	grid-row: 1 2;
 }
 
 .item h3 {
-	margin-bottom: 1em;
 	margin-top: 0;
 }
 
 .item {
-	max-width: 100%;
-	min-width: 0;
-	padding: 0 1rem;
+	padding-bottom: 1em;
 	border-bottom: 1px solid rgb(202, 202, 202);
-	/* overflow-wrap: normal; */
 }
 
 .item p {
@@ -260,13 +275,15 @@ h1 {
 }
 
 .trending {
-	padding-top: 1.5rem;
 	grid-row: 2 3;
 	width: 100%;
+	display: grid;
+	padding-top: 1rem;
 }
 
 .trending .card {
 	grid-template-rows: repeat(4, 4rem);
+	padding: 2rem 1rem;
 }
 
 .account {
